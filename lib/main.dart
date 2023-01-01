@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                         Text(
                           "Find nearest events",
                           style: TextStyle(
-                              color: Colors.white,
+                              color: Colors.grey[900],
                               fontSize: 17,
                               fontWeight: FontWeight.w400),
                         ),
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         Icon(
                           Icons.arrow_forward,
-                          color: Colors.black,
+                          color: Colors.grey[900],
                         ),
                       ],
                     ),

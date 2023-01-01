@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class EventPage extends StatelessWidget {
@@ -6,23 +8,177 @@ class EventPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         leading: IconButton(
           icon: const Icon(
-            Icons.arrow_back,
+            Icons.menu,
             color: Colors.black,
           ),
           onPressed: (() {
             Navigator.pop(context);
           }),
         ),
-        title: const Text(
-          "title",
-          style: TextStyle(color: Colors.black),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                height: 65,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white),
+                child: Center(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'Search Event',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: InputBorder.none,
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 30,
+              ),
+              Text(
+                "Upcoming Events",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 17.5),
+              ),
+              SizedBox(
+                height: 12.5,
+              ),
+              _createRow(
+                  date: '17',
+                  month: 'SEP',
+                  image: 'assets/images/1.jpg',
+                  title: 'Cold Play - 2024'),
+              _createRow(
+                  date: '17',
+                  month: 'SEP',
+                  image: 'assets/images/2.jpg',
+                  title: 'Bobby Hendry - 2022'),
+              _createRow(
+                  date: '17',
+                  month: 'SEP',
+                  image: 'assets/images/3.jpg',
+                  title: 'Ultra - 2023'),
+              _createRow(
+                  date: '17',
+                  month: 'SEP',
+                  image: 'assets/images/background-md.jpg',
+                  title: 'Two Feet - 2023'),
+            ],
+          ),
         ),
       ),
     );
   }
+}
+
+Widget _createRow(
+    {required date, required month, required String image, required title}) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 10),
+    child: Row(
+      children: [
+        Container(
+          padding: EdgeInsets.only(top: 20),
+          height: 200,
+          width: 50,
+          child: Column(
+            children: [
+              Text(
+                date,
+                style: TextStyle(
+                    color: Colors.greenAccent,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold),
+              ),
+              Text(
+                month,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20),
+              )
+            ],
+          ),
+        ),
+        Expanded(
+          child: Column(
+            children: [
+              Container(
+                margin: EdgeInsets.only(left: 10),
+                height: 200,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.cover, image: AssetImage(image)),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.center,
+                      colors: [Colors.black.withOpacity(1), Colors.transparent],
+                    ),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          title,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        SizedBox(
+                          height: 7.5,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.access_time,
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 5,
+                            ),
+                            Text(
+                              '10:00pm',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w400),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
 }
