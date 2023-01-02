@@ -21,6 +21,34 @@ class EventPage extends StatelessWidget {
             Navigator.pop(context);
           }),
         ),
+        iconTheme: IconThemeData(color: Colors.grey[900]),
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 25),
+            child: Container(
+              height: 35,
+              width: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(7.5),
+                image: DecorationImage(
+                  image: AssetImage('assets/images/profile.jpg'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Transform.translate(
+                offset: Offset(15, -15),
+                child: Container(
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.greenAccent,
+                    border: Border.all(color: Colors.white, width: 3),
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -36,11 +64,15 @@ class EventPage extends StatelessWidget {
                     color: Colors.white),
                 child: Center(
                   child: TextField(
+                    cursorColor: Colors.black,
                     decoration: InputDecoration(
                       hintText: 'Search Event',
                       hintStyle: TextStyle(color: Colors.grey),
                       border: InputBorder.none,
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -76,7 +108,7 @@ class EventPage extends StatelessWidget {
               _createRow(
                   date: '17',
                   month: 'SEP',
-                  image: 'assets/images/background-md.jpg',
+                  image: 'assets/images/background.jpg',
                   title: 'Two Feet - 2023'),
             ],
           ),
